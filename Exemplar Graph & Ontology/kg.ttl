@@ -1,0 +1,126 @@
+@prefix : <http://example.org/business#> .
+@prefix schema: <http://schema.org#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:TechIndustry a :BusinessSector ;
+    rdfs:label "Technology Industry" ;
+    rdfs:comment "Businesses related to technology development and IT services." .
+
+:RetailIndustry a :BusinessSector ;
+    rdfs:label "Retail Industry" ;
+    rdfs:comment "Businesses involved in selling goods directly to consumers." .
+
+:FinanceIndustry a :BusinessSector ;
+    rdfs:label "Finance Industry" ;
+    rdfs:comment "Businesses that operate in banking, investment, and financial services." .
+
+:ManufacturingIndustry a :BusinessSector ;
+    rdfs:label "Manufacturing Industry" ;
+    rdfs:comment "Companies involved in producing goods and industrial products." .
+
+:HealthcareIndustry a :BusinessSector ;
+    rdfs:label "Healthcare Industry" ;
+    rdfs:comment "Businesses providing medical and healthcare services." .
+
+:TechNova a schema:Corporation ;
+    schema:name "TechNova Inc." ;
+    schema:address "123 Innovation St, Silicon Valley, USA" ;
+    schema:numberOfEmployees 500 ;
+    :industry :TechIndustry .
+
+:RetailX a schema:Corporation ;
+    schema:name "RetailX Ltd." ;
+    schema:address "45 Commerce Ave, New York, USA" ;
+    schema:numberOfEmployees 300 ;
+    :industry :RetailIndustry .
+
+:FinTrust a schema:Corporation ;
+    schema:name "FinTrust Bank" ;
+    schema:address "12 Financial St, London, UK" ;
+    schema:numberOfEmployees 700 ;
+    :industry :FinanceIndustry .
+
+:HealthFirst a schema:Corporation ;
+    schema:name "HealthFirst" ;
+    schema:address "78 Wellness Blvd, Berlin, Germany" ;
+    schema:numberOfEmployees 400 ;
+    :industry :HealthcareIndustry .
+
+:AutoMotiveTech a schema:Corporation ;
+    schema:name "AutoMotiveTech" ;
+    schema:address "91 Auto Drive, Detroit, USA" ;
+    schema:numberOfEmployees 600 ;
+    :industry :ManufacturingIndustry .
+
+:TechNova :client :FinTrust .
+:TechNova :supplier :AutoMotiveTech .
+:RetailX :rival :TechNova .
+:FinTrust :partner :HealthFirst .
+:AutoMotiveTech :supplier :RetailX .
+:HealthFirst :client :AutoMotiveTech .
+:RetailX :supplier :FinTrust .
+:FinTrust :client :TechNova .
+:HealthFirst :supplier :AutoMotiveTech .
+:TechNova :partner :RetailX .
+
+:AliceJ a schema:Person ;
+    schema:name "Alice Johnson" ;
+    :age 42 ;
+    schema:worksFor :TechNova ;
+    schema:jobTitle "CEO" .
+
+:BobSm a schema:Person ;
+    schema:name "Bob Smith" ;
+    :age 35 ;
+    schema:worksFor :TechNova ;
+    schema:jobTitle "Software Engineer" .
+
+:CDavis a schema:Person ;
+    schema:name "Clara Davis" ;
+    :age 29 ;
+    schema:worksFor :RetailX ;
+    schema:jobTitle "Marketing Manager" .
+
+:DBrown a schema:Person ;
+    schema:name "Daniel Brown" ;
+    :age 50 ;
+    schema:worksFor :FinTrust ;
+    schema:jobTitle "CFO" .
+
+:EvaWil a schema:Person ;
+    schema:name "Eva Wilson" ;
+    :age 39 ;
+    schema:worksFor :HealthFirst ;
+    schema:jobTitle "Medical Director" .
+
+:FrankAd a schema:Person ;
+    schema:name "Frank Adams" ;
+    :age 33 ;
+    schema:worksFor :AutoMotiveTech ;
+    schema:jobTitle "Factory Manager" .
+
+:GraceC a schema:Person ;
+    schema:name "Grace Carter" ;
+    :age 45 ;
+    schema:worksFor :FinTrust ;
+    schema:jobTitle "Investment Analyst" .
+
+:HEvans a schema:Person ;
+    schema:name "Henry Evans" ;
+    :age 28 ;
+    schema:worksFor :RetailX ;
+    schema:jobTitle "Sales Representative" .
+
+:IsFoster a schema:Person ;
+    schema:name "Isabel Foster" ;
+    :age 37 ;
+    schema:worksFor :HealthFirst ;
+    schema:jobTitle "Head of R&D" .
+
+:JackGr a schema:Person ;
+    schema:name "Jack Green" ;
+    :age 41 ;
+    schema:worksFor :TechNova ;
+    schema:jobTitle "CTO" .

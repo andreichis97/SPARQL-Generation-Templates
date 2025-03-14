@@ -1,0 +1,92 @@
+@prefix : <http://example.org/business#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+schema:Corporation a rdfs:Class ;
+    rdfs:subClassOf schema:Organization ;
+    rdfs:label "Corporation" ;
+    rdfs:comment "A company or organization engaged in commercial activities." .
+
+schema:Person a rdfs:Class ;
+    rdfs:label "Person" ;
+    rdfs:comment "An individual who works in the business ecosystem." .
+
+:BusinessSector a rdfs:Class ;
+    rdfs:label "Business Sector" ;
+    rdfs:comment "An industry or field in which companies operate." .
+
+:businessRelation a rdfs:Property ;
+    rdfs:label "Business Relationship" ;
+    rdfs:comment "A connection between two business entities such as client, supplier, rival, etc." .
+
+schema:name a rdf:Property ;
+    rdfs:domain schema:Corporation, schema:Person;
+    rdfs:range xsd:string ;
+    rdfs:label "Company Name" ;
+    rdfs:comment "The name of the company." .
+
+schema:address a rdf:Property ;
+    rdfs:domain schema:Corporation ;
+    rdfs:range xsd:string ;
+    rdfs:label "Company Address" ;
+    rdfs:comment "The physical address of the company." .
+
+schema:numberOfEmployees a rdf:Property ;
+    rdfs:domain schema:Corporation ;
+    rdfs:range xsd:integer ;
+    rdfs:label "Number of Employees" ;
+    rdfs:comment "The total number of employees in the company." .
+
+:industry a rdf:Property ;
+    rdfs:domain schema:Corporation ;
+    rdfs:range :BusinessSector ;
+    rdfs:label "Industry Sector" ;
+    rdfs:comment "The industry in which the company operates." .
+
+schema:worksFor a rdf:Property ;
+    rdfs:domain schema:Person ;
+    rdfs:range schema:Corporation ;
+    rdfs:label "Works For" ;
+    rdfs:comment "Indicates the company where a person is employed." .
+
+schema:jobTitle a rdf:Property ;
+    rdfs:domain schema:Person ;
+    rdfs:range xsd:string ;
+    rdfs:label "Job Title" ;
+    rdfs:comment "The job title of a person in the company." .
+
+:age a rdf:Property ;
+    rdfs:domain schema:Person ;
+    rdfs:range xsd:integer ;
+    rdfs:label "Age" ;
+    rdfs:comment "The age of the person." .
+
+:client a rdf:Property ;
+    rdfs:subPropertyOf :BusinessRelation ;
+    rdfs:domain schema:Corporation ;
+    rdfs:range schema:Corporation ;
+    rdfs:label "Client" ;
+    rdfs:comment "Indicates that one company is a client of another." .
+
+:supplier a rdf:Property ;
+    rdfs:subPropertyOf :BusinessRelation ;
+    rdfs:domain schema:Corporation ;
+    rdfs:range schema:Corporation ;
+    rdfs:label "Supplier" ;
+    rdfs:comment "Indicates that one company supplies goods/services to another." .
+
+:rival a rdf:Property ;
+    rdfs:subPropertyOf :BusinessRelation ;
+    rdfs:domain schema:Corporation ;
+    rdfs:range schema:Corporation ;
+    rdfs:label "Rival" ;
+    rdfs:comment "Indicates competition between two companies." .
+
+:partner a rdf:Property ;
+    rdfs:subPropertyOf :BusinessRelation ;
+    rdfs:domain schema:Corporation ;
+    rdfs:range schema:Corporation ;
+    rdfs:label "Partner" ;
+    rdfs:comment "Indicates a business partnership between two companies." .
